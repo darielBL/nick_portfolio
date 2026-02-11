@@ -12,6 +12,7 @@ gem 'turbo-rails'
 gem 'stimulus-rails'
 gem 'sprockets-rails'
 gem 'importmap-rails'
+gem 'active_storage_validations'
 
 group :development, :test do
   gem 'debug'

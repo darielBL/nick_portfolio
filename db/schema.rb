@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_11_204218) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_11_205659) do
   create_table "abouts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "description"
-    t.string "image_url"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,7 +48,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_11_204218) do
 
   create_table "personal_works", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", default: "nick nightin"
-    t.string "image_url", null: false
     t.string "email", null: false
     t.integer "position", default: 0
     t.datetime "created_at", null: false
@@ -58,7 +56,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_11_204218) do
 
   create_table "portfolio_images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", default: "nick nightin"
-    t.string "image_url", null: false
     t.string "email", null: false
     t.integer "position", default: 0
     t.datetime "created_at", null: false

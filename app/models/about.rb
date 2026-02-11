@@ -16,7 +16,7 @@ class About < ApplicationRecord
     if image.attached?
       Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true)
     else
-      super || 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      nil
     end
   end
 end

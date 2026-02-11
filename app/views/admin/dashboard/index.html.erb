@@ -28,8 +28,13 @@
           <div class="card h-100 border">
             <% if image.image.attached? %>
               <%= image_tag image.image, class: "card-img-top", style: "height: 180px; object-fit: cover;" %>
+            <% elsif image[:image_url].present? %>
+              <%# Para imágenes antiguas %>
+              <%= image_tag image[:image_url], class: "card-img-top", style: "height: 180px; object-fit: cover;" %>
             <% else %>
-              <%= image_tag image.image_url, class: "card-img-top", style: "height: 180px; object-fit: cover;" %>
+              <div class="bg-light d-flex align-items-center justify-content-center" style="height: 180px;">
+                <span class="text-muted">Sin imagen</span>
+              </div>
             <% end %>
             <div class="card-body p-2">
               <p class="small mb-1 text-truncate"><%= image.title %></p>

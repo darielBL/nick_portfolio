@@ -2,7 +2,7 @@ class PortfolioImage < ApplicationRecord
   # Active Storage
   has_one_attached :image
 
-  validates :image, presence: true, content_type: ['image/png', 'image/jpeg', 'image/jpg', 'image/gif']
+  validates :image, presence: true, content_type: ['image/png', 'image/jpeg', 'image/gif']
   validates :title, presence: true
 
   default_scope { order(position: :asc, created_at: :desc) }
@@ -13,7 +13,7 @@ class PortfolioImage < ApplicationRecord
     if image.attached?
       Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true)
     else
-      super
+      nil
     end
   end
 

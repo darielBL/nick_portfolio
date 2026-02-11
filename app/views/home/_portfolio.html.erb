@@ -6,9 +6,15 @@
           <% if image.image.attached? %>
             <%= image_tag image.image, class: "img-fluid mb-3",
                           style: "aspect-ratio: 1/1; object-fit: cover; width: 100%;" %>
-          <% else %>
-            <%= image_tag image.image_url, class: "img-fluid mb-3",
+          <% elsif image[:image_url].present? %>
+            <%# Para imágenes antiguas que todavía tienen image_url en la BD %>
+            <%= image_tag image[:image_url], class: "img-fluid mb-3",
                           style: "aspect-ratio: 1/1; object-fit: cover; width: 100%;" %>
+          <% else %>
+            <div class="bg-dark d-flex align-items-center justify-content-center mb-3"
+                 style="aspect-ratio: 1/1; width: 100%; background-color: #2a2a2a;">
+              <span class="text-secondary">Sin imagen</span>
+            </div>
           <% end %>
           <p class="mb-1 fw-medium" style="color: #f1f1f1;"><%= image.title %></p>
           <p class="text-secondary small"><%= image.email %></p>
