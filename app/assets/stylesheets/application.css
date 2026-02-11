@@ -1,0 +1,110 @@
+/* Fondo general oscuro - SOLO para landing page*/
+                          body {
+                              background-color: #161616 !important;
+                          }
+
+/* El contenedor principal de la landing*/
+   .landing-container {
+       background-color: #161616;
+       color: #f1f1f1;
+   }
+
+/* Textos generales en landing*/
+   .landing-container h1,
+   .landing-container h2,
+   .landing-container h3,
+   .landing-container h4,
+   .landing-container h5,
+   .landing-container h6,
+   .landing-container p,
+   .landing-container span:not(.bg-white *),
+   .landing-container div:not(.bg-white *) {
+       color: #f1f1f1;
+   }
+
+/* Navegación*/
+   .landing-container .nav-link {
+       color: #b0b0b0 !important;
+
+       &:hover, &.active, &.text-dark {
+           color: #ffffff !important;
+       }
+   }
+
+/* Botón secreto*/
+   .landing-container .btn-light.rounded-circle {
+       background-color: #2a2a2a !important;
+       border-color: #444 !important;
+       color: #b0b0b0 !important;
+
+       &:hover {
+           background-color: #f1f1f1 !important;
+           color: #161616 !important;
+       }
+   }
+
+/* Tarjeta de About Me - SIEMPRE blanco con texto oscuro*/
+                         .landing-container .bg-white {
+                             background-color: #ffffff !important;
+
+                             p, .small, .mb-0, .text-secondary {
+                                 color: #1e1e1e !important;
+                             }
+                         }
+
+/* Botones de redes sociales*/
+   .landing-container .btn-light.border {
+       background-color: #2a2a2a !important;
+       border-color: #444 !important;
+       color: #f1f1f1 !important;
+
+       &:hover {
+           background-color: #f1f1f1 !important;
+           color: #161616 !important;
+       }
+
+       i, span {
+           color: #f1f1f1 !important;
+       }
+
+       &:hover i, &:hover span {
+           color: #161616 !important;
+       }
+   }
+
+/* Footer*/
+   .landing-container footer,
+   .landing-container .border-top,
+   .landing-container .border-bottom {
+       border-color: #333 !important;
+   }
+
+.landing-container .footer-item {
+    .fw-medium, span {
+        color: #f1f1f1 !important;
+    }
+    .text-secondary {
+        color: #b0b0b0 !important;
+    }
+}
+
+/* Textos secundarios*/
+   .landing-container .text-secondary,
+   .landing-container .small,
+   .landing-container .email {
+       color: #b0b0b0 !important;
+   }
+
+/* Dashboard - SIN CAMBIOS (mantiene colores claros)*/
+#dashboard-page,
+.admin-container,
+.card,
+.admin-header,
+.dashboard-page * {
+    background-color: #ffffff;
+    color: #1e1e1e;
+
+    h1, h2, h3, h4, h5, h6, p, span, div {
+        color: #1e1e1e;
+    }
+}

@@ -1,0 +1,25 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: mysqlpass
+  host: localhost
+
+development:
+  <<: *default
+  database: nick_nightin_development
+
+test:
+  <<: *default
+  database: nick_nightin_test
+
+production:
+  <<: *default
+  database: <%= ENV['MYSQL_DATABASE'] %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: <%= ENV['MYSQL_HOST'] %>
+  port: <%= ENV['MYSQL_PORT'] || 3306 %>
+  ssl_mode: :verify_identity
+  sslca: /etc/ssl/certs/ca-certificates.crt

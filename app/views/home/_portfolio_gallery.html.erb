@@ -1,0 +1,17 @@
+<%# Partial para Turbo - Solo portfolio %>
+<%= turbo_frame_tag "gallery" do %>
+  <div id="portfolio" class="d-block mb-5">
+    <div class="d-flex flex-column align-items-center gap-5">
+      <% @images.each do |image| %>
+        <div class="text-center" style="max-width: 600px;">
+          <%= image_tag image.image_url, class: "img-fluid mb-3",
+                        style: "aspect-ratio: 1/1; object-fit: cover; width: 100%;" %>
+          <p class="mb-1 fw-medium"><%= image.title %></p>
+          <p class="text-secondary small"><%= image.email %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div id="personal" class="d-none"></div>
+  <div id="about" class="d-none"></div>
+<% end %>

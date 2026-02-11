@@ -1,0 +1,178 @@
+<!-- GESTIÓN DE PORTFOLIO - CON SUBIDA DE ARCHIVOS -->
+<div class="card mb-5 border-0 shadow-sm">
+  <div class="card-header bg-white py-3">
+    <h5 class="mb-0 fw-bold">
+      <i class="fas fa-images me-2"></i>
+      Portfolio
+    </h5>
+  </div>
+  <div class="card-body">
+    <%= form_with model: PortfolioImage.new, url: admin_portfolio_images_path, local: true, html: { multipart: true, class: "mb-4" } do |f| %>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <%= f.text_field :title, class: "form-control", placeholder: "Título", value: "nick nightin" %>
+        </div>
+        <div class="col-md-6">
+          <%= f.file_field :image, class: "form-control", accept: "image/*", required: true %>
+          <small class="text-muted">Formatos: JPG, PNG, GIF. Tamaño máx: 5MB</small>
+        </div>
+        <div class="col-md-2">
+          <%= f.submit "Subir imagen", class: "btn btn-dark w-100" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row g-3">
+      <% @portfolio_images.each do |image| %>
+        <div class="col-md-3">
+          <div class="card h-100 border">
+            <% if image.image.attached? %>
+              <%= image_tag image.image, class: "card-img-top", style: "height: 180px; object-fit: cover;" %>
+            <% else %>
+              <%= image_tag image.image_url, class: "card-img-top", style: "height: 180px; object-fit: cover;" %>
+            <% end %>
+            <div class="card-body p-2">
+              <p class="small mb-1 text-truncate"><%= image.title %></p>
+              <p class="small text-secondary mb-0 text-truncate"><%= image.email %></p>
+            </div>
+            <div class="card-footer bg-white p-2 text-end">
+              <%= button_to admin_portfolio_image_path(image), method: :delete,
+                            class: "btn btn-sm btn-outline-danger",
+                            form: { data: { turbo_confirm: "¿Eliminar esta imagen?" } } do %>
+                <i class="fas fa-trash"></i> Eliminar
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- GESTIÓN DE PERSONAL WORK - CON SUBIDA DE ARCHIVOS -->
+<div class="card mb-5 border-0 shadow-sm">
+  <div class="card-header bg-white py-3">
+    <h5 class="mb-0 fw-bold">
+      <i class="fas fa-pencil-alt me-2"></i>
+      Personal Work
+    </h5>
+  </div>
+  <div class="card-body">
+    <%= form_with model: PersonalWork.new, url: admin_personal_works_path, local: true, html: { multipart: true, class: "mb-4" } do |f| %>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <%= f.text_field :title, class: "form-control", placeholder: "Título", value: "nick nightin" %>
+        </div>
+        <div class="col-md-6">
+          <%= f.file_field :image, class: "form-control", accept: "image/*", required: true %>
+          <small class="text-muted">Formatos: JPG, PNG, GIF. Tamaño máx: 5MB</small>
+        </div>
+        <div class="col-md-2">
+          <%= f.submit "Subir imagen", class: "btn btn-dark w-100" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row g-3">
+      <% @personal_works.each do |work| %>
+        <div class="col-md-3">
+          <div class="card h-100 border">
+            <% if work.image.attached? %>
+              <%= image_tag work.image, class: "card-img-top", style: "height: 180px; object-fit: cover;" %>
+            <% else %>
+              <%= image_tag work.image_url, class: "card-img-top", style: "height: 180px; object-fit: cover;" %>
+            <% end %>
+            <div class="card-body p-2">
+              <p class="small mb-1 text-truncate"><%= work.title %></p>
+              <p class="small text-secondary mb-0 text-truncate"><%= work.email %></p>
+            </div>
+            <div class="card-footer bg-white p-2 text-end">
+              <%= button_to admin_personal_work_path(work), method: :delete,
+                            class: "btn btn-sm btn-outline-danger",
+                            form: { data: { turbo_confirm: "¿Eliminar este trabajo?" } } do %>
+                <i class="fas fa-trash"></i> Eliminar
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- GESTIÓN DE ABOUT ME - CON SUBIDA DE ARCHIVOS -->
+<div class="card mb-5 border-0 shadow-sm">
+  <div class="card-header bg-white py-3">
+    <h5 class="mb-0 fw-bold">
+      <i class="fas fa-user me-2"></i>
+      About Me
+    </h5>
+  </div>
+  <div class="card-body">
+    <%= form_with model: @about, url: admin_about_path, method: :patch, local: true, html: { multipart: true } do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= f.label :image, "Imagen de perfil", class: "form-label fw-medium" %>
+            <%= f.file_field :image, class: "form-control", accept: "image/*" %>
+            <small class="text-muted">Deja en blanco para mantener la imagen actual</small>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :email, "Email de contacto", class: "form-label fw-medium" %>
+            <%= f.email_field :email, class: "form-control" %>
+            <div class="form-text">Este email se actualizará en TODAS las imágenes</div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= f.label :description, "Descripción", class: "form-label fw-medium" %>
+            <%= f.text_area :description, class: "form-control", rows: 6 %>
+          </div>
+        </div>
+      </div>
+
+      <% if @about.image.attached? %>
+        <div class="mb-3">
+          <p class="mb-2">Imagen actual:</p>
+          <%= image_tag @about.image, style: "max-width: 200px; max-height: 150px;" %>
+        </div>
+      <% end %>
+
+      <%= f.submit "Guardar cambios en About Me", class: "btn btn-dark" %>
+    <% end %>
+  </div>
+</div>
+
+<!-- REDES SOCIALES (sin cambios) -->
+<div class="card border-0 shadow-sm">
+  <div class="card-header bg-white py-3">
+    <h5 class="mb-0 fw-bold">
+      <i class="fas fa-share-alt me-2"></i>
+      Redes Sociales
+    </h5>
+  </div>
+  <div class="card-body">
+    <%= form_with url: admin_social_links_path, method: :patch do |f| %>
+      <% @social_links.each do |link| %>
+        <div class="row mb-3 align-items-center">
+          <div class="col-md-2">
+            <span class="fw-medium">
+              <i class="<%= link.icon %> me-2"></i>
+              <%= link.label %>
+            </span>
+          </div>
+          <div class="col-md-10">
+            <%= fields_for "social_links[]", link do |ff| %>
+              <%= ff.hidden_field :id %>
+              <%= ff.url_field :url, class: "form-control", value: link.url, placeholder: "https://#{link.platform}.com/tuusuario" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <%= f.submit "Guardar redes sociales", class: "btn btn-dark mt-3" %>
+    <% end %>
+  </div>
+</div>
