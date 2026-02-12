@@ -30,7 +30,3 @@ end
 group :development do
   gem 'web-console'
 end
-
-group :production do
-  # Solo para producción
-end

@@ -52,7 +52,7 @@
     <orderEntry type="library" scope="PROVIDED" name="connection_pool (v3.0.2, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="date (v3.5.1, mise: 3.3.0) [gem]" level="application" />
-    <orderEntry type="library" scope="TEST" name="debug (v1.11.1, mise: 3.3.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="debug (v1.11.1, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.3, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erb (v6.0.1, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.1, mise: 3.3.0) [gem]" level="application" />
@@ -61,6 +61,7 @@
     <orderEntry type="library" scope="PROVIDED" name="importmap-rails (v2.2.3, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-console (v0.8.2, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="irb (v1.17.0, mise: 3.3.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jmespath (v1.6.2, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="logger (v1.7.0, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.25.0, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.9.0, mise: 3.3.0) [gem]" level="application" />
