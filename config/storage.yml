@@ -2,19 +2,15 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-# PARA PRODUCCIÓN CON AMAZON S3 (RECOMENDADO)
-amazon:
-  service: S3
-  access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
-  secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
-  region: <%= ENV['AWS_REGION'] %>
-  bucket: <%= ENV['AWS_BUCKET'] %>
+development:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
 
-# O PARA DESARROLLO LOCAL
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
 
-development:
+# 👇 PRODUCCIÓN TAMBIÉN USA DISCO LOCAL
+production:
   service: Disk
   root: <%= Rails.root.join("storage") %>

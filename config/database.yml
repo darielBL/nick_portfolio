@@ -2,24 +2,48 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: mysqlpass
-  host: localhost
+  timeout: 5000
+  ssl_mode: :verify_identity
+  sslca: /etc/ssl/certs/ca-certificates.crt
 
 development:
   <<: *default
   database: nick_nightin_development
+  username: root
+  password: mysqlpass
+  socket: /var/run/mysqld/mysqld.sock
 
 test:
   <<: *default
   database: nick_nightin_test
+  username: root
+  password: mysqlpass
+  socket: /var/run/mysqld/mysqld.sock
 
+# PRODUCCIÓN CON AIVEN - MULTIPLES CONEXIONES
 production:
-  <<: *default
-  database: <%= ENV['MYSQL_DATABASE'] %>
-  username: <%= ENV['MYSQL_USERNAME'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
-  host: <%= ENV['MYSQL_HOST'] %>
-  port: <%= ENV['MYSQL_PORT'] || 3306 %>
-  ssl_mode: :verify_identity
-  sslca: /etc/ssl/certs/ca-certificates.crt
+  primary:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+    # Para Aiven SSL
+    ssl_mode: :verify_identity
+    sslca: /etc/ssl/certs/ca-certificates.crt
+
+  cable:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+    pool: <%= ENV.fetch("ACTION_CABLE_POOL_SIZE") { 5 } %>
+    ssl_mode: :verify_identity
+    sslca: /etc/ssl/certs/ca-certificates.crt
+
+  queue:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+    ssl_mode: :verify_identity
+    sslca: /etc/ssl/certs/ca-certificates.crt
+
+  cache:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+    ssl_mode: :verify_identity
+    sslca: /etc/ssl/certs/ca-certificates.crt
