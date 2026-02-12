@@ -6,7 +6,7 @@ ruby '3.2.2'
 gem 'rails', '~> 7.1.0'
 # gem 'mysql2', '~> 0.5.5', require: false
 gem 'pg', '~> 1.5'
-gem 'puma', '~> 6.4'
+gem 'puma', '~> 7.2'
 gem 'bcrypt', '~> 3.1.7'
 
 # Active Storage para subida de archivos
