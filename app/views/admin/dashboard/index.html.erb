@@ -150,15 +150,52 @@
   </div>
 </div>
 
-<!-- REDES SOCIALES (sin cambios) -->
+<!-- REDES SOCIALES - CON CRUD COMPLETO -->
 <div class="card border-0 shadow-sm">
-  <div class="card-header bg-white py-3">
+  <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
     <h5 class="mb-0 fw-bold">
       <i class="fas fa-share-alt me-2"></i>
       Redes Sociales
     </h5>
+    <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="collapse" data-bs-target="#addSocialForm">
+      <i class="fas fa-plus"></i> Añadir red social
+    </button>
   </div>
+
   <div class="card-body">
+    <!-- Formulario para añadir nueva red social (oculto por defecto) -->
+    <div class="collapse mb-4" id="addSocialForm">
+      <div class="card card-body border">
+        <h6 class="fw-bold mb-3">Añadir nueva red social</h6>
+        <%= form_with model: SocialLink.new, url: admin_social_links_path, local: true do |f| %>
+          <div class="row g-3">
+            <div class="col-md-3">
+              <%= f.label :platform, "Plataforma", class: "form-label fw-medium" %>
+              <%= f.text_field :platform, class: "form-control", placeholder: "behance, instagram, etc.", required: true %>
+            </div>
+            <div class="col-md-3">
+              <%= f.label :label, "Etiqueta", class: "form-label fw-medium" %>
+              <%= f.text_field :label, class: "form-control", placeholder: "Behance, Instagram, etc.", required: true %>
+            </div>
+            <div class="col-md-3">
+              <%= f.label :icon, "Icono FontAwesome", class: "form-label fw-medium" %>
+              <%= f.text_field :icon, class: "form-control", placeholder: "fab fa-behance", required: true %>
+              <small class="text-muted">Ej: fab fa-instagram, fab fa-linkedin</small>
+            </div>
+            <div class="col-md-3">
+              <%= f.label :url, "URL", class: "form-label fw-medium" %>
+              <%= f.url_field :url, class: "form-control", placeholder: "https://...", required: true %>
+            </div>
+          </div>
+          <div class="mt-3">
+            <%= f.submit "Guardar red social", class: "btn btn-dark" %>
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#addSocialForm">Cancelar</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Formulario para editar redes existentes -->
     <%= form_with url: admin_social_links_path, method: :patch do |f| %>
       <% @social_links.each do |link| %>
         <div class="row mb-3 align-items-center">
@@ -168,16 +205,24 @@
               <%= link.label %>
             </span>
           </div>
-          <div class="col-md-10">
+          <div class="col-md-9">
             <%= fields_for "social_links[]", link do |ff| %>
               <%= ff.hidden_field :id %>
               <%= ff.url_field :url, class: "form-control", value: link.url, placeholder: "https://#{link.platform}.com/tuusuario" %>
             <% end %>
           </div>
+          <div class="col-md-1 text-end">
+            <%= button_to admin_social_link_path(link), method: :delete,
+                          class: "btn btn-sm btn-outline-danger",
+                          form: { data: { turbo_confirm: "¿Eliminar esta red social?" } } do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </div>
         </div>
       <% end %>
 
-      <%= f.submit "Guardar redes sociales", class: "btn btn-dark mt-3" %>
+      <%= f.submit "Guardar cambios en redes sociales", class: "btn btn-dark mt-3" %>
     <% end %>
   </div>
+</div>
 </div>

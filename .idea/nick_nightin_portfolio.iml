@@ -70,13 +70,13 @@
     <orderEntry type="library" scope="PROVIDED" name="minitest (v6.0.1, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.8.0, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mutex_m (v0.3.0, mise: 3.3.0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mysql2 (v0.5.7, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.6.2, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.2.2, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-smtp (v0.5.1, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.7.5, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.19.0, mise: 3.3.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pg (v1.6.3, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pp (v0.6.3, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="prettyprint (v0.2.0, mise: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="prism (v1.9.0, mise: 3.3.0) [gem]" level="application" />

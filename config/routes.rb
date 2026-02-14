@@ -15,9 +15,10 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
     patch 'about', to: 'dashboard#update_about'
-
     resources :portfolio_images, only: [:create, :destroy]
     resources :personal_works, only: [:create, :destroy]
+    # Redes sociales - CRUD completo
+    resources :social_links, only: [:create, :destroy]
     patch 'social_links', to: 'social_links#update_all'
   end
 end

@@ -16,10 +16,12 @@
               <span class="text-secondary">Sin imagen</span>
             </div>
           <% end %>
-          <p class="mb-1 fw-medium" style="color: #f1f1f1;"><%= image.title %></p>
-          <p class="text-secondary small"><%= image.email %></p>
+          <p class="mb-1 fw-medium" style="color: #f1f1f1; display: flex; justify-content: end"><%= image.title %></p>
+
+          <p class="text-secondary small" style="display: flex; justify-content: end "><%= image.email %></p>
         </div>
       <% end %>
     </div>
   </div>
 <% end %>
+

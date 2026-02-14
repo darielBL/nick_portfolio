@@ -48,9 +48,10 @@
 <body>
 <div class="container py-5 landing-container">  <!-- 👈 Agrega esta clase -->
   <!-- HEADER CENTRADO -->
+  <!-- HEADER CENTRADO - CON NOMBRE CLICKEABLE -->
   <header class="text-center mb-5">
-    <h1 class="display-4 fw-normal">NICK NIGHTIN</h1>
-    <p class="text-secondary mb-4 text-lowercase">character designer</p>
+    <h1 class="display-4 fw-normal" id="secretNameTrigger" style="cursor: default;">NICK NIGHTIN</h1>
+    <p class="text-secondary mb-4 text-lowercase" style="font-size: 1.3rem; cursor: default;" >character designer</p>
 
     <!-- NAVEGACIÓN CENTRADA CON TURBO -->
     <nav class="d-flex justify-content-center gap-5 pb-3 border-bottom">
@@ -145,29 +146,29 @@
 </div>
 
 <!-- BOTÓN DE ACCESO - ACTUALIZADO -->
-<div class="position-fixed bottom-0 end-0 m-4" style="z-index: 1000;">
-  <button id="showLoginModalBtn" class="btn btn-light rounded-circle p-3 border opacity-50"
-          style="width: 50px; height: 50px; transition: opacity 0.2s; background-color: #2a2a2a; border-color: #444; color: #b0b0b0;">
-    <i class="fas fa-lock"></i>
-  </button>
-</div>
-
-<!-- SCRIPT PARA EL MODAL -->
+<!--<div class="position-fixed bottom-0 end-0 m-4" style="z-index: 1000;">-->
+<!--  <button id="showLoginModalBtn" class="btn btn-light rounded-circle p-3 border opacity-50"-->
+<!--          style="width: 50px; height: 50px; transition: opacity 0.2s; background-color: #2a2a2a; border-color: #444; color: #b0b0b0;">-->
+<!--    <i class="fas fa-lock"></i>-->
+<!--  </button>-->
+<!--</div>-->
 <script>
     (function() {
-        // Elementos del modal
         const modal = document.getElementById('loginModal');
-        const showBtn = document.getElementById('showLoginModalBtn');
+        const nameTrigger = document.getElementById('secretNameTrigger');
         const closeBtn = document.getElementById('closeModalBtn');
 
-        // Mostrar modal
-        if (showBtn) {
-            showBtn.addEventListener('click', function(e) {
+        // Mostrar modal al hacer doble clic en el nombre
+        if (nameTrigger) {
+            nameTrigger.addEventListener('dblclick', function(e) {
                 e.preventDefault();
                 if (modal) {
                     modal.style.display = 'flex';
                 }
             });
+
+            // Estilo visual (opcional)
+            nameTrigger.style.cursor = 'default';
         }
 
         // Cerrar modal
@@ -175,7 +176,6 @@
             closeBtn.addEventListener('click', function() {
                 if (modal) {
                     modal.style.display = 'none';
-                    // Limpiar campos
                     const email = document.getElementById('modal_email');
                     const password = document.getElementById('modal_password');
                     if (email) email.value = '';
@@ -184,7 +184,7 @@
             });
         }
 
-        // Cerrar modal al hacer clic fuera del contenido
+        // Cerrar modal al hacer clic fuera
         if (modal) {
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
